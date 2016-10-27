@@ -254,7 +254,7 @@ object Form1: TForm1
     OnClick = BitBtn5Click
   end
   object RichEdit1: TRichEdit
-    Left = 472
+    Left = 528
     Top = 128
     Width = 169
     Height = 433

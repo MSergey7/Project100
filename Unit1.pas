@@ -497,15 +497,15 @@ for i:=1 to MyFP.KolFiskaliz do      //здесь заполняем фискализации
  MemoPrint('Эклз. ' + MyFP.Fiskaliz[i].RegistrNomerEklz, 3);
  end;
 
-MemoPrint(('Активизации : ' + IntToStr(MyFP.KolAktivEklz)) , 2);
+MemoPrint(( #13#10 + 'Активизации : ' + IntToStr(MyFP.KolAktivEklz)) , 2);
 for i:=1 to MyFP.KolAktivEklz do    //здесь заплняем активизации ЭКЛЗ
  begin
- MemoPrint('Фиск №. ' + IntToStr( MyFP.AktivEklz[i].NonerFiskaliz), 1);
+ MemoPrint(IntToStr(i) + '  ф-' + IntToStr( MyFP.AktivEklz[i].NonerFiskaliz) , 1);
  MemoPrint('ЕКЛЗ.   ' + MyFP.AktivEklz[i].RegistrNomerEklz, 3);
  MemoPrint('Дата.   ' + Date8ToStr6(MyFP.AktivEklz[i].DataEklz, '.'), 3) ;
  MemoPrint('Смена.  ' + IntToStr(MyFP.AktivEklz[i].NomerSmenyEklz), 3)   ;
  end;
-
+MemoPrint( #13#10 + '- - - - - - - - - -', 1);
 
 
 ;
