@@ -472,7 +472,9 @@ Form1.RichEdit1.SelStart:= n; // устанавливаем начало выделения
 Form1.RichEdit1.SelLength:= m; // устанавливаем длину выделения Два символа и Один пробел (0x55h --> '55 ')
  if Srt_Color = 1 then Form1.RichEdit1.SelAttributes.Color:=clRed   ;// ... и КРАСНОГО цвета
  if Srt_Color = 2 then Form1.RichEdit1.SelAttributes.Color:=clGreen ;  // ... и ЗЕЛЕНОГО цвета
-// Form1.RichEdit1.Lines.Add(''); // пустая строка, чтоб разделить сообщения
+ if Srt_Color = 3 then Form1.RichEdit1.SelAttributes.Color:=clBlue ;  // ... и ЗЕЛЕНОГО цвета
+
+ // Form1.RichEdit1.Lines.Add(''); // пустая строка, чтоб разделить сообщения
 end;
 
 //.13.
@@ -482,10 +484,34 @@ function PrintFPToRich(i:integer):string;
 var
 s:string;
 begin
+Form1.RichEdit1.Text:='';
+MemoPrint(('Зав Номер : '+ MyFP.ZavNom + #13#10) , 1);
+MemoPrint(('Фискализации : ' + IntToStr(MyFP.KolFiskaliz)) , 2);
+for i:=1 to MyFP.KolFiskaliz do      //здесь заполняем фискализации
+ begin
+ MemoPrint(IntToStr(i), 1);
+ MemoPrint('Рег.  ' + MyFP.Fiskaliz[i].RegistrNomerFis, 3);
+ MemoPrint('Инн.  ' + MyFP.Fiskaliz[i].INN, 3);
+ MemoPrint('Дата. ' + Date8ToStr6(MyFP.Fiskaliz[i].DataFis, '.'), 3);
+ MemoPrint('Смен. ' + IntToStr(MyFP.Fiskaliz[i].NomerSmenyFis), 3);
+ MemoPrint('Эклз. ' + MyFP.Fiskaliz[i].RegistrNomerEklz, 3);
+ end;
+
+MemoPrint(( #13#10 + 'Активизации : ' + IntToStr(MyFP.KolAktivEklz)) , 2);
+for i:=1 to MyFP.KolAktivEklz do    //здесь заплняем активизации ЭКЛЗ
+ begin
+ MemoPrint(IntToStr(i) + '  ф-' + IntToStr( MyFP.AktivEklz[i].NonerFiskaliz) , 1);
+ MemoPrint('ЕКЛЗ.   ' + MyFP.AktivEklz[i].RegistrNomerEklz, 3);
+ MemoPrint('Дата.   ' + Date8ToStr6(MyFP.AktivEklz[i].DataEklz, '.'), 3) ;
+ MemoPrint('Смена.  ' + IntToStr(MyFP.AktivEklz[i].NomerSmenyEklz), 3)   ;
+ end;
+MemoPrint( #13#10 + '- - - - - - - - - -', 1);
+
+
 ;
 ;
-MemoPrint('ABCD', 1);
-MemoPrint('АБВГД', 2);
+//MemoPrint('ABCD', 1);
+//MemoPrint('АБВГД', 2);
 
 
 
