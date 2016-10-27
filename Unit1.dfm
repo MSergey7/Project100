@@ -256,10 +256,16 @@ object Form1: TForm1
   object RichEdit1: TRichEdit
     Left = 528
     Top = 128
-    Width = 129
+    Width = 169
     Height = 433
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clBlue
+    Font.Height = -11
+    Font.Name = 'Courier New'
+    Font.Style = [fsBold]
     Lines.Strings = (
       'RichEdit1')
+    ParentFont = False
     ScrollBars = ssBoth
     TabOrder = 21
   end
