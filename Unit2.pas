@@ -41,7 +41,7 @@ var
  i: integer;
 begin
  try
-
+Form1.BitBtn1.Visible:=false;
    Form1.ComPort1.Open;
    if Form1.ComPort1.Connected then
     begin
@@ -50,12 +50,14 @@ begin
       for i:=0 to Form1.Memo2.lines.count - 1 do
          begin
           Unit1.Print_Op_100_mod(Form1.Memo2.Lines[i]);
+          Unit1.Form1.Label3.Caption:= IntToStr(i+1);
           Sleep(150) ;
          end;
     end;
 
     Form1.ComPort1.Close;
 
+Form1.BitBtn1.Visible:=true;    
  finally end;
 
 end;
@@ -77,8 +79,9 @@ procedure TMyThread.Execute;
 //i:Integer;
 begin
 
-    Synchronize(ShowResult);
-    Synchronize(Test5);
+//    Synchronize(ShowResult);
+//    Synchronize(Test5);
+Test5;
 
 end;
 

@@ -29,11 +29,11 @@ type
     Edit4: TEdit;
     Edit5: TEdit;
     Button4: TButton;
-    Button5: TButton;
     TrackBar1: TTrackBar;
     BitBtn4: TBitBtn;
     BitBtn5: TBitBtn;
     RichEdit1: TRichEdit;
+    ProgressBar1: TProgressBar;
     procedure Button1Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);
@@ -505,7 +505,7 @@ for i:=1 to MyFP.KolAktivEklz do    //здесь заплняем активизации ЭКЛЗ
  MemoPrint('Дата.   ' + Date8ToStr6(MyFP.AktivEklz[i].DataEklz, '.'), 3) ;
  MemoPrint('Смена.  ' + IntToStr(MyFP.AktivEklz[i].NomerSmenyEklz), 3)   ;
  end;
-MemoPrint( #13#10 + '- - - - - - - - - ', 1);
+MemoPrint( #13#10 + '- - - - - - - - - -', 1);
 
 
 ;
@@ -676,7 +676,7 @@ ReadDate1:= EncodeDate(gggg, mmmm, dddd);    //переходим к типу TDateTime
     File1.Free;
     File1:= nil;
 
-Form1.Memo1.Text := Form1.Memo1.Text + #13#10 + s2 + ' - ' + DateToStr(ReadDate1);
+//Form1.Memo1.Text := Form1.Memo1.Text + #13#10 + s2 + ' - ' + DateToStr(ReadDate1);
 
 //Result:= s2;
 Result:=ReadDate1;
@@ -761,7 +761,7 @@ s2:= IntToStr(i);   //для отладки
     File1.Free;
     File1:= nil;
 
-Form1.Memo1.Text := Form1.Memo1.Text + #13#10 + s2;
+//Form1.Memo1.Text := Form1.Memo1.Text + #13#10 + s2;
 Result:= i;
 end;
 
@@ -807,7 +807,7 @@ begin
  i:=0;
   while ((MyFP.Fiskaliz[i+1].RegistrNomerFis <> 'FFFFFFFF')  or (i = 4)) do  i:=i+1;      //проверка на FF   "пустой"
 
-  Form1.Memo1.Text := Form1.Memo1.Text + #13#10 + IntToStr(i);   //для отладки
+//  Form1.Memo1.Text := Form1.Memo1.Text + #13#10 + IntToStr(i);   //для отладки
   Result:= i;
 end;
 
@@ -821,7 +821,7 @@ begin
  i:=0;
   while ((MyFP.AktivEklz[i+1].RegistrNomerEklz <> 'FFFFFFFFFF') or (i = 19)) do  i:=i+1;      //проверка на FF   "пустой"
 
-  Form1.Memo1.Text := Form1.Memo1.Text + #13#10 + IntToStr(i);   //для отладки
+//  Form1.Memo1.Text := Form1.Memo1.Text + #13#10 + IntToStr(i);   //для отладки
   Result:= i;
 end;
 
@@ -836,7 +836,7 @@ begin
   while ((MyFP.SmOtchet[i+1].NomerSmenyOt <> 65535) or (i = 2468)) do  i:=i+1;      //проверка на FF   "пустой"
 
 
-  Form1.Memo1.Text := Form1.Memo1.Text + #13#10 + IntToStr(i);   //для отладки
+//  Form1.Memo1.Text := Form1.Memo1.Text + #13#10 + IntToStr(i);   //для отладки
   Result:= i;
 end;
 
@@ -857,7 +857,7 @@ S:= S + MyFP.SmOtchet[i].SummaSmeny      ;
 //  Form1.Memo1.Text :=  Form1.Memo1.Text + #13#10 + IntToStr(i)+'-' + IntToStr(MyFP.SmOtchet[i].SummaSmeny)+' - ' + IntToStr(S);   //для отладки
 end;
 
- Form1.Memo1.Text :=  Form1.Memo1.Text + #13#10 +  IntToStr(S);   //для отладки
+// Form1.Memo1.Text :=  Form1.Memo1.Text + #13#10 +  IntToStr(S);   //для отладки
   Result:= S;
 end;
 
@@ -893,7 +893,7 @@ if Nom1 <= Nom2 then
          end;
   end;
 ;
-Form1.Memo1.Text :=  Form1.Memo1.Text + #13#10 +  IntToStr(Sum);   //для отладки
+//Form1.Memo1.Text :=  Form1.Memo1.Text + #13#10 +  IntToStr(Sum);   //для отладки
 Result:= Sum;
 end;
 
@@ -973,7 +973,7 @@ if MyFP.Fiskaliz[MyFP.KolFiskaliz].NomerSmenyFis > MyFP.AktivEklz[MyFP.KolAktivE
   then s:=MyFP.Fiskaliz[MyFP.KolFiskaliz].RegistrNomerEklz
   else s:=MyFP.AktivEklz[MyFP.KolAktivEklz].RegistrNomerEklz;
 
- Form1.Memo1.Text :=  Form1.Memo1.Text + #13#10 +  s;   //для отладки
+// Form1.Memo1.Text :=  Form1.Memo1.Text + #13#10 +  s;   //для отладки
  Result:= s;
 end;
 
@@ -1025,7 +1025,7 @@ while flag1=0 do
 
 
 
- Form1.Memo1.Text :=  Form1.Memo1.Text + #13#10 +  IntToStr(i);   //для отладки
+// Form1.Memo1.Text :=  Form1.Memo1.Text + #13#10 +  IntToStr(i);   //для отладки
  Result:= i;
 end;
 
@@ -1109,7 +1109,7 @@ InitMyFP(1);
 MyFp.ZavNom := Func_Read_ZavNomer('Читаем зав номер'); //работает
 
 //2.
-Form1.Memo1.Text := Form1.Memo1.Text + #13#10 + 'Фискализации :'+ #13#10 ;
+//Form1.Memo1.Text := Form1.Memo1.Text + #13#10 + 'Фискализации :'+ #13#10 ;
 for i:=1 to 5 do      //здесь заполняем фискализации
  begin
  MyFP.Fiskaliz[i].RegistrNomerFis := Func_Read_Stroki((27*i-27),4);
@@ -1120,7 +1120,7 @@ for i:=1 to 5 do      //здесь заполняем фискализации
  end;
 
 //3.
-Form1.Memo1.Text := Form1.Memo1.Text + #13#10 + 'Активизации ЭКЛЗ :'+ #13#10 ;
+//Form1.Memo1.Text := Form1.Memo1.Text + #13#10 + 'Активизации ЭКЛЗ :'+ #13#10 ;
 for i:=1 to 20 do    //здесь заплняем активизации ЭКЛЗ
  begin
  MyFP.AktivEklz[i].NonerFiskaliz:=Func_Read_AktNomeraFisk(32267+(13*i-13))  ;
@@ -1130,7 +1130,7 @@ for i:=1 to 20 do    //здесь заплняем активизации ЭКЛЗ
  end;
 
 //4.
-Form1.Memo1.Text := Form1.Memo1.Text + #13#10 + 'Z Отчеты :'+ #13#10 ;
+//Form1.Memo1.Text := Form1.Memo1.Text + #13#10 + 'Z Отчеты :'+ #13#10 ;
 for i:=1 to 2469 do    //Сменные отчеты от 1 до 2469 шт
  begin
  MyFP.SmOtchet[i].NomerSmenyOt:=Func_Read_NomeraSmeny(170+(13*i-13)+ 0) ;
