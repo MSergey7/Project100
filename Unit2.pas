@@ -12,7 +12,7 @@ type
 
             private
 
-            answer:Integer;
+//            answer:Integer;
 
             protected
 
@@ -73,8 +73,8 @@ end;
 //Длинная процедура
 
 procedure TMyThread.Execute;
-var
-i:Integer;
+//var
+//i:Integer;
 begin
 
     Synchronize(ShowResult);

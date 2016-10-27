@@ -64,11 +64,7 @@ end;
 procedure TMyThread.ShowResult;
 
 begin
- ;;
- ;;
-
-
-            Form1.Edit1.Text:=IntToStr(answer);
+//            Form1.Edit1.Text:=IntToStr(answer);
 
 end;
 
